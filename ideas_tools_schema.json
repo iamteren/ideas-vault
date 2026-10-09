@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": {"title": "Ideas Tools", "version": "1.0.0"},
+  "paths": {
+    "/get_idea":        {"get":  {"operationId": "get_idea",        "description": "Retrieve a full idea row from ideas.md by idea number", "parameters": [{"name": "idea_id", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Idea row"}}}},
+    "/get_progress":    {"get":  {"operationId": "get_progress",    "description": "Get progress status and artifact list for an idea",     "parameters": [{"name": "idea_id", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Progress record"}}}},
+    "/update_progress": {"post": {"operationId": "update_progress", "description": "Update progress status and optionally add a note",       "parameters": [{"name": "idea_id", "in": "query", "required": true, "schema": {"type": "string"}}, {"name": "status", "in": "query", "required": true, "schema": {"type": "string"}}, {"name": "note", "in": "query", "required": false, "schema": {"type": "string"}}], "responses": {"200": {"description": "Confirmation"}}}},
+    "/save_artifact":   {"post": {"operationId": "save_artifact",   "description": "Save a drafted artifact to S3",                         "parameters": [{"name": "idea_id", "in": "query", "required": true, "schema": {"type": "string"}}, {"name": "artifact_type", "in": "query", "required": true, "schema": {"type": "string"}}, {"name": "content", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "S3 key"}}}},
+    "/list_artifacts":  {"get":  {"operationId": "list_artifacts",  "description": "List all artifacts saved for an idea",                  "parameters": [{"name": "idea_id", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Artifact list"}}}},
+    "/get_artifact":    {"get":  {"operationId": "get_artifact",    "description": "Retrieve content of a saved artifact",                  "parameters": [{"name": "idea_id", "in": "query", "required": true, "schema": {"type": "string"}}, {"name": "artifact_type", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "Artifact content"}}}}
+  }
+}
